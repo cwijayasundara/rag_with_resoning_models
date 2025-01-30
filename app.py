@@ -42,7 +42,7 @@ groq_api_key = os.getenv("GROQ_API_KEY")
 Settings.llm = OpenAI(model="gpt-4o-mini", temperature=0.2)
                       
 with st.sidebar:
-    st.image("images/plus.png", width=600)
+    st.image("images/logo.jpg", width=600)
 
     st.write("Uselect the LLM you want to use")
     llm_choice = st.radio(

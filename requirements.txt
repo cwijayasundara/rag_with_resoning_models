@@ -10,3 +10,4 @@ python-dotenv
 streamlit
 torch
 llama-index-llms-deepseek
+langchain-deepseek-official
