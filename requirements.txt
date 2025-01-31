@@ -1,7 +1,7 @@
 llama-index-core
 llama-index
 llama-index-embeddings-openai
-llama-index-llms-openai
+llama-index-llms-openai==0.3.15
 llama-index-llms-groq
 llama-index-llms-gemini
 llama-index-utils-workflow
@@ -11,3 +11,4 @@ streamlit
 torch
 llama-index-llms-deepseek
 langchain-deepseek-official
+llama-index-llms-mistralai

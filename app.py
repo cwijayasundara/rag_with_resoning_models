@@ -9,7 +9,7 @@ from llama_index.llms.deepseek import DeepSeek
 from llama_index.llms.groq import Groq
 from llama_index.llms.gemini import Gemini
 from llama_index.core import Settings
-
+from llama_index.llms.mistralai import MistralAI
 nest_asyncio.apply()
 
 def sanitize_filename(filename):
@@ -38,7 +38,7 @@ st.write("RAG system to manage your documents!")
 
 api_key = os.getenv("DEEPSEEK_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
-
+mistral_api_key = os.getenv("MISTRAL_KEY")
 Settings.llm = OpenAI(model="gpt-4o-mini", temperature=0.2)
                       
 with st.sidebar:
@@ -50,10 +50,12 @@ with st.sidebar:
         options=(
             "o1",
             "o1-mini",
+            "o3-mini",
             "gemini-2.0-flash-thinking-exp-01-21",
             "deepseek-reasoner",
             "deepseek-reasoner-groq",
-            "deepseek-chat"
+            "deepseek-chat",
+            "mistral-small-latest"
         )
     )
 
@@ -62,6 +64,8 @@ with st.sidebar:
         llm = OpenAI(model="gpt-4o", temperature=1.0)                   
     elif llm_choice == "o1-mini":
         llm = OpenAI(model="gpt-4o-mini", temperature=1.0)
+    elif llm_choice == "o3-mini":
+        llm = OpenAI(model="o3-mini", temperature=1.0)
     elif llm_choice == "gemini-2.0-flash-thinking-exp-01-21":
         llm = Gemini(model="models/gemini-2.0-flash-thinking-exp-01-21")
     elif llm_choice == "deepseek-reasoner":
@@ -70,6 +74,8 @@ with st.sidebar:
         llm = Groq(model="deepseek-r1-distill-llama-70b", api_key=groq_api_key)
     elif llm_choice == "deepseek-chat":
         llm = DeepSeek(model="deepseek-chat", api_key=api_key)
+    elif llm_choice == "mistral-small-latest":
+        llm = MistralAI(model="mistral-small-latest", api_key=mistral_api_key)
 
     Settings.llm = llm
 
